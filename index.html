@@ -1,518 +1,704 @@
 <!DOCTYPE html>
-
-<html class="scroll-smooth" lang="en"><head>
+<html lang="en">
+<head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link rel="icon" type="image/png" href="logo.png">
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "surface-tint": "#006591",
-                        "on-secondary-container": "#3d637d",
-                        "surface-container": "#eaeef4",
-                        "on-primary-fixed-variant": "#004c6e",
-                        "secondary-fixed": "#c9e6ff",
-                        "surface-bright": "#f6faff",
-                        "on-tertiary-fixed-variant": "#3e4943",
-                        "primary-fixed": "#c9e6ff",
-                        "on-secondary-fixed": "#001e2f",
-                        "on-primary-container": "#003751",
-                        "on-error-container": "#93000a",
-                        "on-secondary-fixed-variant": "#234b64",
-                        "surface-container-lowest": "#ffffff",
-                        "tertiary-fixed-dim": "#bdcac1",
-                        "error": "#ba1a1a",
-                        "inverse-primary": "#89ceff",
-                        "tertiary-fixed": "#d9e6dd",
-                        "surface-container-highest": "#dee3e9",
-                        "inverse-on-surface": "#edf1f7",
-                        "on-surface-variant": "#3e4850",
-                        "on-secondary": "#ffffff",
-                        "on-background": "#171c20",
-                        "error-container": "#ffdad6",
-                        "on-primary": "#ffffff",
-                        "surface": "#f6faff",
-                        "on-error": "#ffffff",
-                        "secondary-fixed-dim": "#a5cbe9",
-                        "background": "#f6faff",
-                        "on-tertiary": "#ffffff",
-                        "primary": "#006591",
-                        "surface-dim": "#d6dae0",
-                        "on-tertiary-container": "#2a3530",
-                        "outline": "#6e7881",
-                        "surface-variant": "#dee3e9",
-                        "surface-container-high": "#e4e8ee",
-                        "on-primary-fixed": "#001e2f",
-                        "secondary-container": "#b8dffe",
-                        "outline-variant": "#bec8d2",
-                        "tertiary": "#55615a",
-                        "primary-fixed-dim": "#89ceff",
-                        "secondary": "#3c627d",
-                        "on-surface": "#171c20",
-                        "surface-container-low": "#f0f4fa",
-                        "primary-container": "#0ea5e9",
-                        "inverse-surface": "#2c3135",
-                        "tertiary-container": "#929e96",
-                        "on-tertiary-fixed": "#131e19"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    "fontFamily": {
-                        "headline": ["Manrope"],
-                        "body": ["Inter"],
-                        "label": ["Inter"]
-                    },
-                    "animation": {
-                        "marquee": "marquee 40s linear infinite",
-                        "marquee-hover": "marquee 60s linear infinite",
-                    },
-                    "keyframes": {
-                        "marquee": {
-                            "0%": { transform: "translateX(0)" },
-                            "100%": { transform: "translateX(-50%)" },
-                        }
-                    }
-                },
-            },
-        }
-    </script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mahamaya Doctor's Clinic &amp; Dipanjan Medical — Chandannagar</title>
+<link rel="icon" type="image/png" href="logo.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(12px);
-        }
-        .interactive-dots {
-            background-image: radial-gradient(circle, currentColor 1px, transparent 1px);
-            background-size: 24px 24px;
-        }
-        .dot-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(24px, 1fr));
-            gap: 0;
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            opacity: 0.1;
-            z-index: 0;
-        }
-        .dot-trigger {
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            pointer-events: auto;
-        }
-        .dot {
-            width: 3px;
-            height: 3px;
-            background-color: currentColor;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
-        .dot-trigger:hover .dot {
-            transform: scale(3);
-            background-color: #006591;
-            box-shadow: 0 0 8px #006591;
-        }
-        .marquee-container {
-            overflow: hidden;
-            user-select: none;
-            display: flex;
-            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-        }
-        .marquee-content {
-            display: flex;
-            gap: 1.5rem;
-            animation: marquee 50s linear infinite;
-        }
-        .marquee-content:hover {
-            animation-play-state: paused;
-        }
-    </style>
+  :root{
+    --paper:#FAF6EE;
+    --paper-2:#F3EDDF;
+    --ink:#1C2320;
+    --ink-soft:#5B6B5E;
+    --teal:#0B4F45;
+    --teal-deep:#083A33;
+    --teal-tint:#E4EEE9;
+    --amber:#E3A343;
+    --amber-deep:#B9791F;
+    --amber-tint:#FBEDD6;
+    --line:#DED5C1;
+    --white:#FFFFFF;
+    --radius-lg:26px;
+    --radius-md:18px;
+    --radius-sm:12px;
+    --shadow-soft: 0 20px 45px -25px rgba(11,79,69,0.35);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Public Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    margin:0;
+    color:var(--teal-deep);
+    letter-spacing:-0.01em;
+  }
+  p{margin:0;}
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,48px);}
+  ::selection{background:var(--amber-tint);color:var(--teal-deep);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important;animation-iteration-count:1 !important;transition-duration:0.001ms !important;scroll-behavior:auto !important;}
+  }
+
+  /* ---------- lamp signature icon ---------- */
+  .lamp{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    width:18px;height:18px;
+    flex-shrink:0;
+  }
+  .lamp svg{width:100%;height:100%;}
+  .lamp .flame{
+    transform-origin:50% 70%;
+    animation:flicker 3.2s ease-in-out infinite;
+  }
+  @keyframes flicker{
+    0%,100%{transform:scale(1) translateY(0);}
+    30%{transform:scale(1.08,0.94) translateY(-0.3px);}
+    55%{transform:scale(0.95,1.05) translateY(0.2px);}
+    80%{transform:scale(1.05,0.96) translateY(-0.2px);}
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'Public Sans',sans-serif;
+    font-weight:700;
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--teal);
+  }
+
+  /* ---------- reveal on scroll ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(22px);
+    transition:opacity 0.8s cubic-bezier(.16,.84,.44,1), transform 0.8s cubic-bezier(.16,.84,.44,1);
+  }
+  .reveal.in{opacity:1;transform:translateY(0);}
+  .reveal-stagger > *{transition-delay:calc(var(--i, 0) * 90ms);}
+
+  /* ---------- nav ---------- */
+  header.nav{
+    position:fixed;top:0;left:0;width:100%;z-index:100;
+    background:rgba(250,246,238,0.82);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid transparent;
+    transition:border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  header.nav.scrolled{border-bottom-color:var(--line);box-shadow:0 8px 30px -20px rgba(0,0,0,0.25);}
+  .nav-inner{
+    max-width:1180px;margin:0 auto;padding:16px clamp(20px,4vw,48px);
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .brand{display:flex;align-items:center;gap:10px;}
+  .brand img{width:34px;height:34px;border-radius:8px;object-fit:cover;}
+  .brand span{font-family:'Fraunces',serif;font-weight:600;font-size:19px;color:var(--teal-deep);}
+  .nav-links{display:flex;align-items:center;gap:34px;}
+  .nav-links a{
+    font-weight:600;font-size:14.5px;color:var(--ink-soft);
+    position:relative;padding:4px 0;transition:color 0.25s ease;
+  }
+  .nav-links a::after{
+    content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;
+    background:var(--amber);transition:width 0.3s ease;
+  }
+  .nav-links a:hover{color:var(--teal-deep);}
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{
+    background:var(--teal);color:var(--white);padding:11px 22px;border-radius:999px;
+    font-weight:700;font-size:14px;transition:transform 0.25s ease, background 0.25s ease;
+    display:inline-flex;align-items:center;gap:8px;
+  }
+  .nav-cta:hover{background:var(--teal-deep);transform:translateY(-1px);}
+  .burger{display:none;flex-direction:column;gap:5px;width:26px;cursor:pointer;background:none;border:none;padding:6px;}
+  .burger span{display:block;height:2px;width:100%;background:var(--teal-deep);transition:transform 0.3s ease, opacity 0.3s ease;}
+  .mobile-panel{
+    display:none;flex-direction:column;gap:2px;
+    background:var(--white);border-top:1px solid var(--line);
+    max-height:0;overflow:hidden;transition:max-height 0.4s ease;
+  }
+  .mobile-panel.open{max-height:340px;}
+  .mobile-panel a{padding:16px clamp(20px,4vw,48px);border-bottom:1px solid var(--paper-2);font-weight:600;color:var(--ink);}
+  .mobile-panel .nav-cta{margin:16px clamp(20px,4vw,48px);justify-content:center;}
+
+  @media (max-width:860px){
+    .nav-links{display:none;}
+    .nav-cta.desktop-only{display:none;}
+    .burger{display:flex;}
+    .mobile-panel{display:flex;}
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    padding:150px 0 90px;
+    background:
+      radial-gradient(560px 420px at 88% -8%, var(--amber-tint) 0%, rgba(251,237,214,0) 70%),
+      var(--paper);
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;
+  }
+  .badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--white);border:1px solid var(--line);
+    padding:8px 16px 8px 12px;border-radius:999px;
+    font-size:12.5px;font-weight:700;color:var(--teal);letter-spacing:0.02em;
+    box-shadow:0 10px 24px -18px rgba(11,79,69,0.4);
+  }
+  .hero h1{
+    font-size:clamp(2.5rem,4.4vw,3.9rem);line-height:1.06;margin-top:22px;
+  }
+  .hero h1 em{font-style:normal;color:var(--amber-deep);}
+  .hero p.lead{
+    margin-top:22px;font-size:17px;line-height:1.7;color:var(--ink-soft);max-width:480px;
+  }
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;}
+  .btn-primary{
+    background:var(--teal);color:var(--white);padding:15px 28px;border-radius:999px;
+    font-weight:700;font-size:15px;display:inline-flex;align-items:center;gap:10px;
+    transition:transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    box-shadow:0 16px 30px -16px rgba(11,79,69,0.55);
+  }
+  .btn-primary:hover{transform:translateY(-2px);background:var(--teal-deep);}
+  .btn-secondary{
+    background:transparent;color:var(--teal-deep);padding:15px 26px;border-radius:999px;
+    font-weight:700;font-size:15px;border:1.5px solid var(--line);
+    transition:border-color 0.25s ease, background 0.25s ease;
+  }
+  .btn-secondary:hover{border-color:var(--teal);background:var(--white);}
+  .btn-primary svg,.btn-secondary svg{width:16px;height:16px;transition:transform 0.25s ease;}
+  .btn-primary:hover svg{transform:translateX(3px);}
+
+  .trust-row{
+    display:flex;flex-wrap:wrap;gap:28px;margin-top:44px;padding-top:30px;border-top:1px solid var(--line);
+  }
+  .trust-item{display:flex;align-items:baseline;gap:8px;}
+  .trust-item strong{font-family:'Fraunces',serif;font-size:24px;color:var(--teal-deep);font-weight:600;}
+  .trust-item span{font-size:12.5px;color:var(--ink-soft);font-weight:600;}
+
+  .hero-visual{position:relative;}
+  .hero-frame{
+    position:relative;border-radius:var(--radius-lg);overflow:hidden;
+    box-shadow:var(--shadow-soft);
+    aspect-ratio:4/4.6;
+  }
+  .hero-frame img{width:100%;height:100%;object-fit:cover;}
+  .float-card{
+    position:absolute;left:-8%;bottom:10%;
+    background:var(--white);border-radius:var(--radius-md);
+    padding:18px 22px;box-shadow:0 24px 44px -22px rgba(11,79,69,0.4);
+    display:flex;align-items:center;gap:14px;
+    animation:floatY 5s ease-in-out infinite;
+    max-width:230px;
+  }
+  @keyframes floatY{0%,100%{transform:translateY(0);}50%{transform:translateY(-9px);}}
+  .float-card .num{font-family:'Fraunces',serif;font-size:26px;font-weight:700;color:var(--teal);}
+  .float-card .lbl{font-size:12px;color:var(--ink-soft);font-weight:600;line-height:1.3;}
+
+  @media (max-width:940px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-visual{order:-1;max-width:420px;margin:0 auto;}
+    .float-card{left:6%;}
+  }
+
+  /* ---------- section shell ---------- */
+  section{padding:96px 0;position:relative;}
+  .section-head{
+    display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:52px;flex-wrap:wrap;
+  }
+  .section-head h2{font-size:clamp(1.8rem,3vw,2.5rem);margin-top:12px;max-width:520px;}
+  .section-head p{color:var(--ink-soft);max-width:380px;line-height:1.6;font-size:15px;}
+
+  /* ---------- services ---------- */
+  .services{background:var(--white);}
+  .service-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(140px,auto);gap:16px;
+  }
+  .s-card{
+    background:var(--paper);border-radius:var(--radius-md);padding:28px;
+    display:flex;flex-direction:column;justify-content:space-between;
+    transition:transform 0.35s cubic-bezier(.2,.8,.3,1), box-shadow 0.35s ease;
+    border:1px solid var(--line);
+  }
+  .s-card:hover{transform:translateY(-6px);box-shadow:0 22px 40px -24px rgba(11,79,69,0.35);}
+  .s-icon{
+    width:44px;height:44px;border-radius:12px;background:var(--teal-tint);
+    display:flex;align-items:center;justify-content:center;color:var(--teal);margin-bottom:18px;
+  }
+  .s-icon svg{width:22px;height:22px;}
+  .s-card h3{font-size:17px;color:var(--ink);margin-bottom:6px;}
+  .s-card p{font-size:13.5px;color:var(--ink-soft);line-height:1.55;}
+
+  .s-wide{grid-column:span 2;grid-row:span 2;}
+  .s-wide img{border-radius:var(--radius-sm);height:170px;width:100%;object-fit:cover;margin-top:18px;}
+  .s-feature{
+    grid-column:span 2;background:var(--teal);border-radius:var(--radius-md);
+    padding:28px;display:flex;align-items:center;justify-content:space-between;color:var(--white);
+    position:relative;overflow:hidden;
+  }
+  .s-feature h3{color:var(--white);font-size:19px;}
+  .s-feature p{color:#CFE3DD;font-size:13.5px;margin-top:6px;max-width:220px;}
+  .s-feature .lamp{position:absolute;right:22px;top:22px;width:26px;height:26px;opacity:0.55;}
+
+  .tag-row{margin-top:14px;display:flex;gap:6px;flex-wrap:wrap;}
+  .tag{background:var(--white);border:1px solid var(--line);font-size:10px;font-weight:700;letter-spacing:0.05em;padding:4px 9px;border-radius:6px;color:var(--ink-soft);}
+
+  @media (max-width:940px){
+    .service-grid{grid-template-columns:repeat(2,1fr);}
+    .s-wide{grid-column:span 2;grid-row:auto;}
+    .s-feature{grid-column:span 2;}
+  }
+  @media (max-width:560px){
+    .service-grid{grid-template-columns:1fr;}
+    .s-wide,.s-feature{grid-column:span 1;}
+  }
+
+  /* ---------- doctors ---------- */
+  .doctors{background:var(--paper);}
+  .doc-featured{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:52px;}
+  .doc-card{
+    background:var(--white);border-radius:var(--radius-lg);padding:30px;
+    display:flex;gap:26px;align-items:center;border:1px solid var(--line);
+    transition:box-shadow 0.35s ease, transform 0.35s ease;
+  }
+  .doc-card:hover{box-shadow:0 24px 44px -26px rgba(11,79,69,0.35);transform:translateY(-4px);}
+  .doc-photo{
+    width:150px;height:150px;flex-shrink:0;border-radius:var(--radius-md);overflow:hidden;background:var(--paper-2);
+  }
+  .doc-photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(45%);transition:filter 0.5s ease, transform 0.5s ease;}
+  .doc-card:hover .doc-photo img{filter:grayscale(0%);transform:scale(1.04);}
+  .doc-specialty{
+    display:inline-block;background:var(--amber-tint);color:var(--amber-deep);
+    font-size:10.5px;font-weight:700;letter-spacing:0.06em;padding:5px 11px;border-radius:7px;margin-bottom:10px;
+  }
+  .doc-card h3{font-size:20px;color:var(--teal-deep);}
+  .doc-card .cred{font-size:13px;color:var(--ink-soft);margin:6px 0 12px;font-weight:600;}
+  .doc-card ul{list-style:none;padding:0;margin:0;font-size:13px;color:var(--ink-soft);display:flex;flex-direction:column;gap:4px;}
+  .doc-card ul li{display:flex;align-items:center;gap:8px;}
+  .doc-card ul li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--amber);flex-shrink:0;}
+  .doc-slot{display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:var(--teal);margin-top:10px;}
+
+  @media (max-width:820px){.doc-featured{grid-template-columns:1fr;} .doc-card{flex-direction:column;text-align:center;} .doc-card ul li{justify-content:center;}}
+
+  .carousel-wrap{position:relative;}
+  .carousel{
+    display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px;
+    scrollbar-width:none;
+  }
+  .carousel::-webkit-scrollbar{display:none;}
+  .doc-mini{
+    scroll-snap-align:start;flex:0 0 auto;width:250px;background:var(--white);
+    border:1px solid var(--line);border-radius:var(--radius-md);padding:22px;
+    transition:transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .doc-mini:hover{transform:translateY(-4px);box-shadow:0 18px 34px -22px rgba(11,79,69,0.3);}
+  .doc-mini .doc-specialty{font-size:9.5px;}
+  .doc-mini h4{font-family:'Fraunces',serif;font-size:16px;color:var(--teal-deep);margin:2px 0 4px;font-weight:600;}
+  .doc-mini p{font-size:12px;color:var(--ink-soft);line-height:1.5;}
+
+  .carousel-controls{display:flex;justify-content:flex-end;gap:10px;margin-top:18px;}
+  .c-btn{
+    width:42px;height:42px;border-radius:50%;background:var(--white);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--teal-deep);
+    transition:background 0.25s ease, border-color 0.25s ease;
+  }
+  .c-btn:hover{background:var(--teal);color:var(--white);border-color:var(--teal);}
+  .c-btn svg{width:17px;height:17px;}
+
+  /* ---------- pharmacy ---------- */
+  .pharmacy{background:var(--white);}
+  .pharm-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+  .pharm-card{
+    background:var(--teal-tint);border-radius:var(--radius-lg);padding:44px;position:relative;overflow:hidden;
+  }
+  .pharm-card::after{
+    content:"";position:absolute;right:-40px;top:-40px;width:180px;height:180px;
+    border-radius:50%;background:radial-gradient(circle,rgba(227,163,67,0.22),transparent 70%);
+  }
+  .pharm-card h2{font-size:1.9rem;position:relative;}
+  .pharm-card p.desc{margin-top:16px;color:var(--ink-soft);line-height:1.7;font-size:15px;max-width:440px;position:relative;}
+  .pharm-list{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:28px;position:relative;}
+  .pharm-item{
+    background:var(--white);border-radius:var(--radius-sm);padding:14px 16px;
+    display:flex;align-items:center;gap:11px;font-size:13.5px;font-weight:600;
+    border:1px solid var(--line);
+  }
+  .pharm-item svg{width:19px;height:19px;color:var(--teal);flex-shrink:0;}
+  .pharm-card .btn-primary{margin-top:30px;width:100%;justify-content:center;position:relative;}
+  .pharm-img{border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-soft);}
+  .pharm-img img{height:460px;width:100%;object-fit:cover;transition:transform 0.6s ease;}
+  .pharm-img:hover img{transform:scale(1.04);}
+
+  @media (max-width:900px){.pharm-grid{grid-template-columns:1fr;} .pharm-img{order:-1;} .pharm-img img{height:300px;}}
+  @media (max-width:480px){.pharm-list{grid-template-columns:1fr;} .pharm-card{padding:28px;}}
+
+  /* ---------- contact ---------- */
+  .contact{background:var(--paper);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;}
+  .c-item{display:flex;gap:20px;padding:22px 0;border-bottom:1px solid var(--line);}
+  .c-item:last-child{border-bottom:none;}
+  .c-ico{
+    width:52px;height:52px;border-radius:14px;background:var(--white);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;color:var(--teal);flex-shrink:0;
+    transition:background 0.25s ease, color 0.25s ease;
+  }
+  .c-ico svg{width:22px;height:22px;}
+  .c-item:hover .c-ico{background:var(--teal);color:var(--white);}
+  .c-item h4{font-size:16px;color:var(--ink);margin-bottom:5px;font-family:'Public Sans',sans-serif;font-weight:700;}
+  .c-item p{font-size:14px;color:var(--ink-soft);line-height:1.6;}
+  .c-item .phone-lg{font-family:'Fraunces',serif;font-size:26px;color:var(--teal);font-weight:600;}
+  .map-frame{border-radius:var(--radius-lg);overflow:hidden;min-height:400px;box-shadow:var(--shadow-soft);}
+  .map-frame img{width:100%;height:100%;object-fit:cover;transition:transform 0.8s ease;}
+  .map-frame:hover img{transform:scale(1.05);}
+
+  @media (max-width:900px){.contact-grid{grid-template-columns:1fr;} .map-frame{min-height:280px;}}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--teal-deep);color:#CFE3DD;padding:64px 0 32px;}
+  .foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px;}
+  .foot-brand{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+  .foot-brand span{font-family:'Fraunces',serif;font-size:19px;color:var(--white);font-weight:600;}
+  footer p{font-size:13.5px;line-height:1.7;color:#A9C4BC;max-width:320px;}
+  footer h5{font-size:11px;text-transform:uppercase;letter-spacing:0.12em;color:#7FA79A;font-weight:700;margin-bottom:14px;font-family:'Public Sans',sans-serif;}
+  footer a{color:#CFE3DD;font-size:13.5px;display:block;margin-bottom:9px;transition:color 0.2s ease;}
+  footer a:hover{color:var(--amber);}
+  .foot-bottom{margin-top:48px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.1);font-size:12.5px;color:#7FA79A;}
+  @media (max-width:760px){.foot-grid{grid-template-columns:1fr;gap:28px;}}
+</style>
 </head>
-<body class="bg-surface font-body text-on-surface">
-<!-- TopAppBar -->
-<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-12 py-4 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
-<div class="flex items-center gap-2">
-<img src="logo.png" alt="Medical Services" class="w-8 h-8" />
-<span class="text-xl font-bold text-sky-900 dark:text-sky-100 font-headline tracking-tight">Mahamaya Clinic</span>
-</div>
-<div class="hidden md:flex items-center gap-8 font-['Manrope'] font-semibold tracking-tight">
-<a class="text-slate-600 dark:text-slate-400 hover:text-sky-600 transition-colors duration-200" href="doctors.html">Doctors</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-sky-600 transition-colors duration-200" href="#services">Services</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-sky-600 transition-colors duration-200" href="#pharmacy">Pharmacy</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-sky-600 transition-colors duration-200" href="#contact">Contact</a>
-</div>
-<button class="bg-gradient-to-r from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-full font-label text-sm font-semibold hover:opacity-90 active:scale-95 transition-all shadow-lg shadow-primary/20" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
-            Book Appointment
-        </button>
-</nav>
-<!-- Hero Section -->
-<header class="relative pt-32 pb-20 px-6 md:px-12 overflow-hidden bg-surface">
-<!-- Interactive Background Dots -->
-<div class="dot-container text-primary/30">
-<script>
-                document.write(Array(1000).fill('<div class="dot-trigger"><div class="dot"></div></div>').join(''));
-            </script>
-</div>
-<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
-<div class="relative z-10">
-<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container text-xs font-bold tracking-wider mb-6">
-<span class="material-symbols-outlined text-sm" data-icon="verified">verified</span>
-                    TRUSTED HEALTHCARE SINCE 1996
-                </div>
-<h1 class="text-5xl md:text-7xl font-headline font-extrabold text-on-background leading-[1.1] mb-6">
-                    Professional Care <br/>
-<span class="text-primary">For Your Family.</span>
-</h1>
-<p class="text-lg text-on-surface-variant max-w-xl mb-10 leading-relaxed">
-                    Mahamaya Doctor's Clinic &amp; Dipanjan Medical provide integrated healthcare solutions under one roof. Expert consultations, comprehensive diagnostics, and a fully stocked pharmacy in Chandannagar.
-                </p>
-<div class="flex flex-wrap gap-4">
-<a class="bg-primary text-on-primary px-8 py-4 rounded-full font-label font-bold flex items-center gap-2 hover:shadow-xl transition-all" href="#doctors">
-                        Consult a Doctor
-                        <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
-</a>
-<a class="bg-surface-container-highest text-on-surface px-8 py-4 rounded-full font-label font-bold hover:bg-surface-container-high transition-all" href="#services">
-                        Our Services
-                    </a>
-</div>
-</div>
-<div class="relative">
-<div class="absolute inset-0 bg-primary/5 rounded-[2rem] -rotate-3 scale-105"></div>
-<img alt="" class="relative rounded-[2rem] shadow-2xl w-full h-[500px] object-cover" data-alt="Modern clinical interior with soft lighting, a clean reception area, and a professional doctor consulting with a smiling patient in a bright airy room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUujAN7KNexOuGvapIzrMuI9u0tHR4mKiCy262kj4wDNVJ_m37AktviMeejPsaBKlF9FhZyohzXQCZsjy9i0TnK9gNFauWW_ggf5J3jv73eTuSLiyn-o3WPICAFDY76W1N2g5oswaysz6lUQ6KkNLxqh1qyu0vIJEDIgvG6D3OcsQD2BU7n5Vq1UiI9YzOe23hPewzeKjoov-21W9RDCHYIphvE91vzt5o2nO_RBcLYbB5FqLyv78nD-j6lF1nmB-FVkJMjDi50NQx"/>
-</div>
-</div>
+<body>
+
+<header class="nav" id="siteNav">
+  <div class="nav-inner">
+    <div class="brand">
+      <img src="logo.png" alt="Mahamaya Clinic logo"/>
+      <span>Mahamaya Clinic</span>
+    </div>
+    <nav class="nav-links">
+      <a href="doctors.html">Doctors</a>
+      <a href="#services">Services</a>
+      <a href="#pharmacy">Pharmacy</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="nav-cta desktop-only" href="#contact">
+      Book appointment
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+    <button class="burger" id="burgerBtn" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-panel" id="mobilePanel">
+    <a href="doctors.html">Doctors</a>
+    <a href="#services">Services</a>
+    <a href="#pharmacy">Pharmacy</a>
+    <a href="#contact">Contact</a>
+    <a class="nav-cta" href="#contact">Book appointment</a>
+  </div>
 </header>
-<!-- Services Bento Grid -->
-<section class="py-24 px-6 md:px-12 bg-surface-container-low" id="services">
-<div class="max-w-7xl mx-auto">
-<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-<div>
-<h2 class="text-3xl font-headline font-bold text-primary mb-2">Our Specializations</h2>
-<p class="text-on-surface-variant">Comprehensive medical care across multiple departments.</p>
-</div>
-<div class="flex gap-2">
-<span class="px-4 py-2 bg-secondary-container text-on-secondary-container rounded-lg text-sm font-medium">Outpatient</span>
-<span class="px-4 py-2 bg-secondary-container text-on-secondary-container rounded-lg text-sm font-medium">Diagnostics</span>
-</div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-<div class="md:col-span-2 md:row-span-2 bg-surface-container-lowest p-8 rounded-3xl flex flex-col justify-between">
-<div>
-<span class="material-symbols-outlined text-primary text-4xl mb-4" data-icon="orthopedics">orthopedics</span>
-<h3 class="text-2xl font-headline font-bold mb-4">Orthopaedics &amp; Joint Care</h3>
-<p class="text-on-surface-variant">Expert treatment for bone, joint, and spinal conditions with advanced rehabilitative support.</p>
-</div>
-<img alt="" class="mt-8 rounded-2xl h-48 object-cover" data-alt="Close up of a doctor showing a spine model to a patient in a bright consultation room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB69Ro1dMrosVAcYPY22zl64I6NITx3EsT7tYIA4zWOjvaEnpqgNtZgsDl262H2_GXMQnzI2JsFN28JypXbwUwET1YUDOY_eJggdL5HP02ICHQYnuZiqhr9uTgFbS3jT3h1shdN2zBvhtl6unLacVbfXhUyG-eBqrtdOnlC9Ramu7ZEZWunNNMrSXIQU9taNeM2vHwejAs-udn00_U3VZZIw07bgXDgadsp3FiDEEGYq3Aqe_7g1su92sNISvC9hGgUECxuy4NWxNHV"/>
-</div>
-<div class="bg-white p-8 rounded-3xl shadow-sm">
-<span class="material-symbols-outlined text-primary text-3xl mb-4" data-icon="child_care">child_care</span>
-<h3 class="text-lg font-headline font-bold">Paediatrics</h3>
-<p class="text-sm text-on-surface-variant mt-2">Specialized care for infants and children.</p>
-</div>
-<div class="bg-white p-8 rounded-3xl shadow-sm">
-<span class="material-symbols-outlined text-primary text-3xl mb-4" data-icon="female">female</span>
-<h3 class="text-lg font-headline font-bold">Gynaecology</h3>
-<p class="text-sm text-on-surface-variant mt-2">Comprehensive health services for women.</p>
-</div>
-<div class="md:col-span-2 bg-primary text-on-primary p-8 rounded-3xl flex items-center justify-between overflow-hidden relative">
-<div class="relative z-10">
-<h3 class="text-2xl font-headline font-bold mb-2">General Surgery</h3>
-<p class="text-primary-fixed">Consultation for elective and emergency procedures.</p>
-</div>
-<span class="material-symbols-outlined text-white/20 text-9xl absolute -right-4 -bottom-4" data-icon="surgical_repro">surgical</span>
-</div>
-<div class="bg-white p-8 rounded-3xl shadow-sm">
-<h3 class="text-lg font-headline font-bold">ENT Specialist</h3>
-<div class="mt-4 flex gap-2 flex-wrap">
-<span class="bg-surface-container-low px-2 py-1 rounded text-[10px] font-bold">EAR</span>
-<span class="bg-surface-container-low px-2 py-1 rounded text-[10px] font-bold">NOSE</span>
-<span class="bg-surface-container-low px-2 py-1 rounded text-[10px] font-bold">THROAT</span>
-</div>
-</div>
-<div class="bg-white p-8 rounded-3xl shadow-sm">
-<span class="material-symbols-outlined text-primary text-3xl mb-4" data-icon="face">face</span>
-<h3 class="text-lg font-headline font-bold">Dermatology</h3>
-<p class="text-sm text-on-surface-variant mt-2">Skin, hair, and nail treatments.</p>
-</div>
-</div>
-</div>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="reveal in" style="--i:0">
+      <span class="badge">
+        <span class="lamp">
+          <svg viewBox="0 0 24 24" fill="none"><path class="flame" d="M12 3c1.8 2.4 3 4.2 3 6.4a3 3 0 1 1-6 0C9 7.2 10.2 5.4 12 3z" fill="#E3A343"/><path d="M7 15h10a5 5 0 0 1-5 6 5 5 0 0 1-5-6z" fill="#0B4F45"/></svg>
+        </span>
+        Trusted care since 1996
+      </span>
+      <h1>Care that feels<br/>like <em>family.</em></h1>
+      <p class="lead">Mahamaya Doctor's Clinic and Dipanjan Medical bring consultations, diagnostics, and a fully stocked pharmacy together under one roof in Chandannagar — the way healthcare should work.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="#doctors">
+          Consult a doctor
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn-secondary" href="#services">Our services</a>
+      </div>
+      <div class="trust-row">
+        <div class="trust-item"><strong>29</strong><span>Years serving<br/>Chandannagar</span></div>
+        <div class="trust-item"><strong>10+</strong><span>Medical<br/>specialities</span></div>
+        <div class="trust-item"><strong>24/7</strong><span>Emergency medical<br/>supplies</span></div>
+      </div>
+    </div>
+    <div class="hero-visual reveal in" style="--i:1">
+      <div class="hero-frame">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUujAN7KNexOuGvapIzrMuI9u0tHR4mKiCy262kj4wDNVJ_m37AktviMeejPsaBKlF9FhZyohzXQCZsjy9i0TnK9gNFauWW_ggf5J3jv73eTuSLiyn-o3WPICAFDY76W1N2g5oswaysz6lUQ6KkNLxqh1qyu0vIJEDIgvG6D3OcsQD2BU7n5Vq1UiI9YzOe23hPewzeKjoov-21W9RDCHYIphvE91vzt5o2nO_RBcLYbB5FqLyv78nD-j6lF1nmB-FVkJMjDi50NQx" alt="Doctor consulting with a patient at Mahamaya Clinic"/>
+      </div>
+      <div class="float-card">
+        <div class="num">7</div>
+        <div class="lbl">Consultant departments under one roof</div>
+      </div>
+    </div>
+  </div>
 </section>
-<!-- Doctors Section -->
-<section class="py-24 px-6 md:px-12 relative overflow-hidden" id="doctors">
-<!-- Interactive Background Dots -->
-<div class="dot-container text-primary/20">
-<script>
-                document.write(Array(800).fill('<div class="dot-trigger"><div class="dot"></div></div>').join(''));
-            </script>
-</div>
-<div class="max-w-7xl mx-auto relative z-10">
-<div class="text-center mb-20">
-<h2 class="text-4xl font-headline font-extrabold text-on-background mb-4">Our Eminent Doctors</h2>
-<div class="w-24 h-1.5 bg-primary mx-auto rounded-full"></div>
-</div>
-<!-- Featured Doctors with Photos -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-<!-- Prof. Dr. S. B. Ray -->
-<div class="bg-surface-container-lowest rounded-3xl p-8 flex flex-col md:flex-row gap-8 items-center shadow-sm hover:shadow-md transition-shadow">
-<div class="w-48 h-48 shrink-0 bg-surface-container-low rounded-2xl overflow-hidden">
-<img alt="Prof. Dr. S. B. Ray" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" src="1.png"/>
-</div>
-<div>
-<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-[10px] font-bold tracking-widest mb-3 inline-block">NEUROLOGY &amp; PAEDIATRIC NEUROLOGY</span>
-<h3 class="text-2xl font-headline font-bold text-sky-900">Prof. Dr. S. B. Ray</h3>
-<p class="text-on-surface-variant font-medium mb-4">DCH (KOL), MD (MEDICINE), DM (NEURO)</p>
-<ul class="text-sm text-on-surface-variant space-y-1">
-<li>• Consultant Neurologist</li>
-<li>• Paediatric Neurologist</li>
-<li>• Critical Care Consultant</li>
-</ul>
-</div>
-</div>
-<!-- Dr. Vivek Shaw -->
-<div class="bg-surface-container-lowest rounded-3xl p-8 flex flex-col md:flex-row gap-8 items-center shadow-sm hover:shadow-md transition-shadow">
-<div class="w-48 h-48 shrink-0 bg-surface-container-low rounded-2xl overflow-hidden">
-<img alt="Dr. Vivek Shaw" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" src="2.png"/>
-</div>
-<div>
-<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-[10px] font-bold tracking-widest mb-3 inline-block">UROLOGY &amp; SURGERY</span>
-<h3 class="text-2xl font-headline font-bold text-sky-900">Dr. Vivek Shaw</h3>
-<p class="text-on-surface-variant font-medium mb-4">MBBS, MS - General &amp; Laparoscopic, MCh - Urology</p>
-<p class="text-xs font-bold text-primary flex items-center gap-1">
-<span class="material-symbols-outlined text-sm" data-icon="calendar_today">calendar_today</span>
-                            Every Alternate Monday 3 P.M.
-                        </p>
-</div>
-</div>
-</div>
-<!-- Rollercoaster / Marquee Carousel for other doctors -->
-<div class="marquee-container py-4">
-<div class="marquee-content">
-<!-- Set 1 -->
-<div class="w-[350px] bg-white p-6 rounded-2xl border border-surface-container-highest shrink-0">
-  <span class="text-[10px] font-bold text-primary/70 tracking-widest block mb-2">UROLOGY / GENERAL & LAPAROSCOPIC</span>
-  <h4 class="text-lg font-headline font-bold text-on-surface mb-1">Dr. Vivek Shaw</h4>
-  <p class="text-xs text-on-surface-variant mb-3">MBBS, MS - General & Laparoscopic, MCh - Urology</p>
-</div>
 
-<div class="w-[350px] bg-white p-6 rounded-2xl border border-surface-container-highest shrink-0">
-  <span class="text-[10px] font-bold text-primary/70 tracking-widest block mb-2">GENERAL SURGEON</span>
-  <h4 class="text-lg font-headline font-bold text-on-surface mb-1">Dr. Jagannath Das</h4>
-  <p class="text-xs text-on-surface-variant mb-3">MBBS (CAL), MS (P.G.I. Chandigarh)</p>
-</div>
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow"><span class="lamp"><svg viewBox="0 0 24 24" fill="none"><path class="flame" d="M12 3c1.8 2.4 3 4.2 3 6.4a3 3 0 1 1-6 0C9 7.2 10.2 5.4 12 3z" fill="#E3A343"/><path d="M7 15h10a5 5 0 0 1-5 6 5 5 0 0 1-5-6z" fill="#0B4F45"/></svg></span>Specialisations</span>
+        <h2>Comprehensive care, department by department.</h2>
+      </div>
+      <p>From routine check-ups to specialist surgery, our consultants cover the conditions Chandannagar families see most often.</p>
+    </div>
 
-<div class="w-[350px] bg-white p-6 rounded-2xl border border-surface-container-highest shrink-0">
-  <span class="text-[10px] font-bold text-primary/70 tracking-widest block mb-2">GENERAL SURGEON</span>
-  <h4 class="text-lg font-headline font-bold text-on-surface mb-1">Dr. Atmadeep Biswas</h4>
-  <p class="text-xs text-on-surface-variant mb-3">MBBS (CAL), MS (IPGMER & SSKM)</p>
-</div>
+    <div class="service-grid reveal-stagger">
+      <div class="s-card s-wide reveal" style="--i:0">
+        <div>
+          <div class="s-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4v6a4 4 0 0 0 8 0V4"/><circle cx="18" cy="16" r="3"/><path d="M14 15l2 -2"/></svg></div>
+          <h3>Orthopaedics &amp; joint care</h3>
+          <p>Diagnosis and treatment for bone, joint, and spinal conditions, with rehabilitative support built into every plan.</p>
+        </div>
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB69Ro1dMrosVAcYPY22zl64I6NITx3EsT7tYIA4zWOjvaEnpqgNtZgsDl262H2_GXMQnzI2JsFN28JypXbwUwET1YUDOY_eJggdL5HP02ICHQYnuZiqhr9uTgFbS3jT3h1shdN2zBvhtl6unLacVbfXhUyG-eBqrtdOnlC9Ramu7ZEZWunNNMrSXIQU9taNeM2vHwejAs-udn00_U3VZZIw07bgXDgadsp3FiDEEGYq3Aqe_7g1su92sNISvC9hGgUECxuy4NWxNHV" alt="Doctor reviewing a spine model with a patient"/>
+      </div>
 
-<div class="w-[350px] bg-white p-6 rounded-2xl border border-surface-container-highest shrink-0">
-  <span class="text-[10px] font-bold text-primary/70 tracking-widest block mb-2">MEDICINE</span>
-  <h4 class="text-lg font-headline font-bold text-on-surface mb-1">Dr. D. K. Sarkar</h4>
-  <p class="text-xs text-on-surface-variant mb-3">MBBS (CAL), MD (CAL) Medicine</p>
-</div>
+      <div class="s-card reveal" style="--i:1">
+        <div>
+          <div class="s-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M6 21c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg></div>
+          <h3>Paediatrics</h3>
+          <p>Specialised, gentle care for infants and children.</p>
+        </div>
+      </div>
 
-<div class="w-[350px] bg-white p-6 rounded-2xl border border-surface-container-highest shrink-0">
-  <span class="text-[10px] font-bold text-primary/70 tracking-widest block mb-2">GYNAECOLOGIST</span>
-  <h4 class="text-lg font-headline font-bold text-on-surface mb-1">Dr. Banhishikha Modak</h4>
-  <p class="text-xs text-on-surface-variant mb-3">MBBS (HONS), DGO, DNB, FMAS</p>
-</div>
+      <div class="s-card reveal" style="--i:2">
+        <div>
+          <div class="s-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 16v6M9 19h6"/></svg></div>
+          <h3>Gynaecology</h3>
+          <p>Comprehensive health services for women, at every life stage.</p>
+        </div>
+      </div>
 
-<div class="w-[350px] bg-white p-6 rounded-2xl border border-surface-container-highest shrink-0">
-  <span class="text-[10px] font-bold text-primary/70 tracking-widest block mb-2">SKIN SPECIALIST</span>
-  <h4 class="text-lg font-headline font-bold text-on-surface mb-1">Dr. P. K. Ghosh</h4>
-  <p class="text-xs text-on-surface-variant mb-3">MD (Dermatology)</p>
-</div>
+      <div class="s-feature reveal" style="--i:3">
+        <div>
+          <h3>General surgery</h3>
+          <p>Consultation for elective and emergency surgical procedures.</p>
+        </div>
+        <span class="lamp"><svg viewBox="0 0 24 24" fill="none"><path class="flame" d="M12 3c1.8 2.4 3 4.2 3 6.4a3 3 0 1 1-6 0C9 7.2 10.2 5.4 12 3z" fill="#FFFFFF"/><path d="M7 15h10a5 5 0 0 1-5 6 5 5 0 0 1-5-6z" fill="#FFFFFF"/></svg></span>
+      </div>
 
-<div class="w-[350px] bg-white p-6 rounded-2xl border border-surface-container-highest shrink-0">
-  <span class="text-[10px] font-bold text-primary/70 tracking-widest block mb-2">ORTHOPAEDIC</span>
-  <h4 class="text-lg font-headline font-bold text-on-surface mb-1">Dr. Sumit Kr. Samanta</h4>
-  <p class="text-xs text-on-surface-variant mb-3">MBBS (CAL), D. Ortho (CAL)</p>
-</div>
+      <div class="s-card reveal" style="--i:4">
+        <div>
+          <h3>ENT specialist</h3>
+          <p>Ear, nose, and throat diagnosis and treatment.</p>
+          <div class="tag-row">
+            <span class="tag">EAR</span><span class="tag">NOSE</span><span class="tag">THROAT</span>
+          </div>
+        </div>
+      </div>
 
-<div class="w-[350px] bg-white p-6 rounded-2xl border border-surface-container-highest shrink-0">
-  <span class="text-[10px] font-bold text-primary/70 tracking-widest block mb-2">GENERAL PRACTITIONER</span>
-  <h4 class="text-lg font-headline font-bold text-on-surface mb-1">Dr. D. K. Maji</h4>
-  <p class="text-xs text-on-surface-variant mb-3">MBBS (CAL), AMA (IIMC)</p>
-</div>
-<!-- Duplicate Set for Seamless Scroll -->
-<div class="w-[350px] bg-white p-6 rounded-2xl border border-surface-container-highest shrink-0">
-  <span class="text-[10px] font-bold text-primary/70 tracking-widest block mb-2">UROLOGY / GENERAL & LAPAROSCOPIC</span>
-  <h4 class="text-lg font-headline font-bold text-on-surface mb-1">Dr. Vivek Shaw</h4>
-  <p class="text-xs text-on-surface-variant mb-3">MBBS, MS - General & Laparoscopic, MCh - Urology</p>
-</div>
-
-<div class="w-[350px] bg-white p-6 rounded-2xl border border-surface-container-highest shrink-0">
-  <span class="text-[10px] font-bold text-primary/70 tracking-widest block mb-2">GENERAL SURGEON</span>
-  <h4 class="text-lg font-headline font-bold text-on-surface mb-1">Dr. Jagannath Das</h4>
-  <p class="text-xs text-on-surface-variant mb-3">MBBS (CAL), MS (P.G.I. Chandigarh)</p>
-</div>
-
-<div class="w-[350px] bg-white p-6 rounded-2xl border border-surface-container-highest shrink-0">
-  <span class="text-[10px] font-bold text-primary/70 tracking-widest block mb-2">GENERAL SURGEON</span>
-  <h4 class="text-lg font-headline font-bold text-on-surface mb-1">Dr. Atmadeep Biswas</h4>
-  <p class="text-xs text-on-surface-variant mb-3">MBBS (CAL), MS (IPGMER & SSKM)</p>
-</div>
-
-<div class="w-[350px] bg-white p-6 rounded-2xl border border-surface-container-highest shrink-0">
-  <span class="text-[10px] font-bold text-primary/70 tracking-widest block mb-2">MEDICINE</span>
-  <h4 class="text-lg font-headline font-bold text-on-surface mb-1">Dr. D. K. Sarkar</h4>
-  <p class="text-xs text-on-surface-variant mb-3">MBBS (CAL), MD (CAL) Medicine</p>
-</div>
-
-<div class="w-[350px] bg-white p-6 rounded-2xl border border-surface-container-highest shrink-0">
-  <span class="text-[10px] font-bold text-primary/70 tracking-widest block mb-2">GYNAECOLOGIST</span>
-  <h4 class="text-lg font-headline font-bold text-on-surface mb-1">Dr. Banhishikha Modak</h4>
-  <p class="text-xs text-on-surface-variant mb-3">MBBS (HONS), DGO, DNB, FMAS</p>
-</div>
-
-<div class="w-[350px] bg-white p-6 rounded-2xl border border-surface-container-highest shrink-0">
-  <span class="text-[10px] font-bold text-primary/70 tracking-widest block mb-2">SKIN SPECIALIST</span>
-  <h4 class="text-lg font-headline font-bold text-on-surface mb-1">Dr. P. K. Ghosh</h4>
-  <p class="text-xs text-on-surface-variant mb-3">MD (Dermatology)</p>
-</div>
-
-<div class="w-[350px] bg-white p-6 rounded-2xl border border-surface-container-highest shrink-0">
-  <span class="text-[10px] font-bold text-primary/70 tracking-widest block mb-2">ORTHOPAEDIC</span>
-  <h4 class="text-lg font-headline font-bold text-on-surface mb-1">Dr. Sumit Kr. Samanta</h4>
-  <p class="text-xs text-on-surface-variant mb-3">MBBS (CAL), D. Ortho (CAL)</p>
-</div>
-
-<div class="w-[350px] bg-white p-6 rounded-2xl border border-surface-container-highest shrink-0">
-  <span class="text-[10px] font-bold text-primary/70 tracking-widest block mb-2">GENERAL PRACTITIONER</span>
-  <h4 class="text-lg font-headline font-bold text-on-surface mb-1">Dr. D. K. Maji</h4>
-  <p class="text-xs text-on-surface-variant mb-3">MBBS (CAL), AMA (IIMC)</p>
-</div>
+      <div class="s-card reveal" style="--i:5">
+        <div>
+          <div class="s-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3 3 6 6.5 6 10a6 6 0 0 1-12 0c0-3.5 3-7 6-10z"/></svg></div>
+          <h3>Dermatology</h3>
+          <p>Skin, hair, and nail treatments for the whole family.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
-<!-- Pharmacy & Medical Section -->
-<section class="py-24 px-6 md:px-12 bg-surface-container-low" id="pharmacy">
-<div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 items-center">
-<div class="lg:w-1/2">
-<div class="bg-white p-12 rounded-[2.5rem] shadow-sm relative overflow-hidden">
-<div class="absolute top-8 right-8">
-<span class="material-symbols-outlined text-6xl text-primary/10" data-icon="medication">medication</span>
-</div>
-<h2 class="text-3xl font-headline font-bold text-sky-900 mb-6" id="pharmacy-title">Dipanjan Medical</h2>
-<p class="text-on-surface-variant mb-8 leading-relaxed">
-                        Our in-house pharmacy offers a wide range of medications and diagnostic support services. We ensure 24/7 availability for emergency medical supplies.
-                    </p>
-<div class="grid grid-cols-2 gap-4">
-<div class="flex items-center gap-3 p-4 bg-surface rounded-xl">
-<span class="material-symbols-outlined text-primary" data-icon="bloodtype">bloodtype</span>
-<span class="text-sm font-semibold">Blood Sugar Test</span>
-</div>
-<div class="flex items-center gap-3 p-4 bg-surface rounded-xl">
-<span class="material-symbols-outlined text-primary" data-icon="monitor_heart">monitor_heart</span>
-<span class="text-sm font-semibold">BP Monitoring</span>
-</div>
-<div class="flex items-center gap-3 p-4 bg-surface rounded-xl">
-<span class="material-symbols-outlined text-primary" data-icon="air">air</span>
-<span class="text-sm font-semibold">Oxygen Support</span>
-</div>
-<div class="flex items-center gap-3 p-4 bg-surface rounded-xl">
-<span class="material-symbols-outlined text-primary" data-icon="mask">masks</span>
-<span class="text-sm font-semibold">Nebulizer</span>
-</div>
-</div>
-<button class="mt-10 w-full bg-primary text-white py-4 rounded-xl font-bold flex justify-center items-center gap-2 hover:bg-on-primary-fixed-variant transition-all" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
-<span class="material-symbols-outlined" data-icon="call">call</span>
-                        Order Medicine: 8159020468
-                    </button>
-</div>
-</div>
-<div class="lg:w-1/2">
-<img alt="" class="rounded-[2.5rem] w-full h-[450px] object-cover" data-alt="A clean modern pharmacy with organized medicine shelves and a professional pharmacist providing consultation at a sleek counter" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3efTe0W8jADjAvuY_qacTBtsfjiVLqI4B1L5RJq4igmiFmWOhaoBNU0YoEdn-PCwDCXXES8c7SdTsfy03SUIP6rzvFYzaiJ_IObiixCMTuu628piVcLlqrADddCnwtC56jU3oGRHuQ2ogkUdIa7D5ujOdhChI2bh9ZfF57kwWWI2nPYOyi-FQGibBy4eYOpx7NFiuTEvkYq2YNWwo9wSE3ackPDbtI5FGg1Rzk-Ev0nsZJEaUrfyz7-OVFIxpwmvvs51CgsO5hVsN"/>
-</div>
-</div>
+
+<section class="doctors" id="doctors">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow"><span class="lamp"><svg viewBox="0 0 24 24" fill="none"><path class="flame" d="M12 3c1.8 2.4 3 4.2 3 6.4a3 3 0 1 1-6 0C9 7.2 10.2 5.4 12 3z" fill="#E3A343"/><path d="M7 15h10a5 5 0 0 1-5 6 5 5 0 0 1-5-6z" fill="#0B4F45"/></svg></span>Our consultants</span>
+        <h2>Meet the doctors Chandannagar trusts.</h2>
+      </div>
+      <p>Two specialists hold regular clinics here; the rest of our consulting team rotates through the week — scroll to see who's in.</p>
+    </div>
+
+    <div class="doc-featured">
+      <div class="doc-card reveal" style="--i:0">
+        <div class="doc-photo"><img src="1.png" alt="Prof. Dr. S. B. Ray"/></div>
+        <div>
+          <span class="doc-specialty">Neurology &amp; Paediatric Neurology</span>
+          <h3>Prof. Dr. S. B. Ray</h3>
+          <p class="cred">DCH (KOL), MD (Medicine), DM (Neuro)</p>
+          <ul>
+            <li>Consultant Neurologist</li>
+            <li>Paediatric Neurologist</li>
+            <li>Critical Care Consultant</li>
+          </ul>
+        </div>
+      </div>
+      <div class="doc-card reveal" style="--i:1">
+        <div class="doc-photo"><img src="2.png" alt="Dr. Vivek Shaw"/></div>
+        <div>
+          <span class="doc-specialty">Urology &amp; Surgery</span>
+          <h3>Dr. Vivek Shaw</h3>
+          <p class="cred">MBBS, MS – General &amp; Laparoscopic, MCh – Urology</p>
+          <div class="doc-slot">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>
+            Every alternate Monday, 3 PM
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel-wrap reveal">
+      <div class="carousel" id="docCarousel">
+        <div class="doc-mini"><span class="doc-specialty">Urology / General &amp; Laparoscopic</span><h4>Dr. Vivek Shaw</h4><p>MBBS, MS – General &amp; Laparoscopic, MCh – Urology</p></div>
+        <div class="doc-mini"><span class="doc-specialty">General Surgeon</span><h4>Dr. Jagannath Das</h4><p>MBBS (Cal), MS (P.G.I. Chandigarh)</p></div>
+        <div class="doc-mini"><span class="doc-specialty">General Surgeon</span><h4>Dr. Atmadeep Biswas</h4><p>MBBS (Cal), MS (IPGMER &amp; SSKM)</p></div>
+        <div class="doc-mini"><span class="doc-specialty">Medicine</span><h4>Dr. D. K. Sarkar</h4><p>MBBS (Cal), MD (Cal) Medicine</p></div>
+        <div class="doc-mini"><span class="doc-specialty">Gynaecologist</span><h4>Dr. Banhishikha Modak</h4><p>MBBS (Hons), DGO, DNB, FMAS</p></div>
+        <div class="doc-mini"><span class="doc-specialty">Skin Specialist</span><h4>Dr. P. K. Ghosh</h4><p>MD (Dermatology)</p></div>
+        <div class="doc-mini"><span class="doc-specialty">Orthopaedic</span><h4>Dr. Sumit Kr. Samanta</h4><p>MBBS (Cal), D. Ortho (Cal)</p></div>
+        <div class="doc-mini"><span class="doc-specialty">General Practitioner</span><h4>Dr. D. K. Maji</h4><p>MBBS (Cal), AMA (IIMC)</p></div>
+      </div>
+      <div class="carousel-controls">
+        <button class="c-btn" id="carPrev" aria-label="Scroll left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button class="c-btn" id="carNext" aria-label="Scroll right"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+    </div>
+  </div>
 </section>
-<!-- Location/Contact -->
-<section class="py-24 px-6 md:px-12 relative overflow-hidden" id="contact">
-<!-- Interactive Background Dots -->
-<div class="dot-container text-primary/20">
-<script>
-                document.write(Array(800).fill('<div class="dot-trigger"><div class="dot"></div></div>').join(''));
-            </script>
-</div>
-<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 relative z-10">
-<div>
-<h2 class="text-4xl font-headline font-extrabold mb-8" id="reach-us">Reach Us</h2>
-<div class="space-y-8">
-<div class="flex gap-6 group">
-<div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-white transition-all">
-<span class="material-symbols-outlined text-3xl" data-icon="location_on">location_on</span>
-</div>
-<div>
-<h4 class="font-bold text-lg mb-1">Our Address</h4>
-<p class="text-on-surface-variant">Bidyalankar More, Beside RNMCRC, <br/>Rupial Nandy Road, Chandannagar, Hooghly</p>
-</div>
-</div>
-<div class="flex gap-6 group">
-<div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-white transition-all">
-<span class="material-symbols-outlined text-3xl" data-icon="call">call</span>
-</div>
-<div>
-<h4 class="font-bold text-lg mb-1">Emergency Call</h4>
-<p class="text-primary font-bold text-2xl">9831274727</p>
-<p class="text-on-surface-variant text-sm">Alt: 8159020468</p>
-</div>
-</div>
-<div class="flex gap-6 group">
-<div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-white transition-all">
-<span class="material-symbols-outlined text-3xl" data-icon="schedule">schedule</span>
-</div>
-<div>
-<h4 class="font-bold text-lg mb-1">Clinic Hours</h4>
-<p class="text-on-surface-variant">Mon – Sat: 08:00 AM – 10:00 PM</p>
-<p class="text-on-surface-variant">Sunday: 09:00 AM – 02:00 PM</p>
-</div>
-</div>
-</div>
-</div>
-<div class="bg-surface-container-low rounded-3xl overflow-hidden min-h-[400px] shadow-lg group">
-<img alt="Clinic Map Location" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" data-location="Chandannagar, West Bengal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBT8kuESDuB7jCj9mb-KugwulfLOFGed5O4sLvvrFh7sXI5_SZxXB1GEBpQmxtr7bW2jj4vKfB78v5YPW2egZf0ln_KxnJ0BHL_cjOsY5HEIsISD17_gBI8DVS8n2v2E9EbAOtQcZHV_ckpQsA8fF_sj4xfETXMb9OPwaD9r_ZzyMBOcwTLkFJTSuPwycGy8POa5CwVLzD87dn6OcvSUZpRUp2Gf7BAA9ODEEMaXaGQjsWWCC0C_9s76XRGSXuhceJvp2Ape6mTMUnT"/>
-</div>
-</div>
+
+<section class="pharmacy" id="pharmacy">
+  <div class="wrap pharm-grid">
+    <div class="pharm-card reveal">
+      <span class="eyebrow"><span class="lamp"><svg viewBox="0 0 24 24" fill="none"><path class="flame" d="M12 3c1.8 2.4 3 4.2 3 6.4a3 3 0 1 1-6 0C9 7.2 10.2 5.4 12 3z" fill="#E3A343"/><path d="M7 15h10a5 5 0 0 1-5 6 5 5 0 0 1-5-6z" fill="#0B4F45"/></svg></span>Dipanjan Medical</span>
+      <h2>The pharmacy next door, open when you need it.</h2>
+      <p class="desc">A full range of medication and diagnostic support, with emergency medical supplies available around the clock.</p>
+      <div class="pharm-list">
+        <div class="pharm-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 8.5l7 7M6 18l4-4M14 6l4 4-8 8-4-4z"/></svg>Blood sugar test</div>
+        <div class="pharm-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-9-9a5 5 0 0 1 9-3 5 5 0 0 1 9 3c-2 4.5-9 9-9 9z"/></svg>BP monitoring</div>
+        <div class="pharm-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18c0-6 3-10 6-14 3 4 6 8 6 14a6 6 0 0 1-12 0z"/></svg>Oxygen support</div>
+        <div class="pharm-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13a8 8 0 0 1 16 0v4a2 2 0 0 1-2 2h-1v-6h3M4 13h3v6H6a2 2 0 0 1-2-2v-4z"/></svg>Nebulizer</div>
+      </div>
+      <a class="btn-primary" href="tel:8159020468">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .7 3a2 2 0 0 1-.4 2.1L8 10.3a16 16 0 0 0 5.7 5.7l1.5-1.4a2 2 0 0 1 2.1-.4c1 .4 2 .6 3 .7a2 2 0 0 1 1.7 2z"/></svg>
+        Order medicine: 8159020468
+      </a>
+    </div>
+    <div class="pharm-img reveal">
+      <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3efTe0W8jADjAvuY_qacTBtsfjiVLqI4B1L5RJq4igmiFmWOhaoBNU0YoEdn-PCwDCXXES8c7SdTsfy03SUIP6rzvFYzaiJ_IObiixCMTuu628piVcLlqrADddCnwtC56jU3oGRHuQ2ogkUdIa7D5ujOdhChI2bh9ZfF57kwWWI2nPYOyi-FQGibBy4eYOpx7NFiuTEvkYq2YNWwo9wSE3ackPDbtI5FGg1Rzk-Ev0nsZJEaUrfyz7-OVFIxpwmvvs51CgsO5hVsN" alt="Dipanjan Medical pharmacy counter"/>
+    </div>
+  </div>
 </section>
-<!-- Footer -->
-<footer class="w-full py-16 px-6 md:px-24 grid grid-cols-1 md:grid-cols-2 gap-8 items-start bg-slate-50 dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800 font-['Inter'] text-sm leading-relaxed">
-<div>
-<span class="text-lg font-black text-sky-900 dark:text-sky-100 mb-4 block">Mahamaya Doctor's Clinic</span>
-<p class="text-slate-500 dark:text-slate-400 max-w-sm mb-6">Providing high-quality medical services and pharmacy assistance to the residents of Chandannagar and Hooghly since 1996.</p>
-<p class="text-sky-800 dark:text-sky-300">© 2024 Mahamaya Doctor's Clinic &amp; Dipanjan Medical</p>
-</div>
-<div class="grid grid-cols-2 gap-8">
-<div class="space-y-4">
-<span class="font-bold text-on-surface uppercase tracking-widest text-[10px]">Location</span>
-<p class="text-slate-500 dark:text-slate-400">Bidyalankar More, Chandannagar, Hooghly</p>
-<a class="text-sky-800 dark:text-sky-300 hover:text-sky-700 dark:hover:text-sky-200 underline underline-offset-4 block" href="#contact">Location Map</a>
-</div>
-<div class="space-y-4">
-<span class="font-bold text-on-surface uppercase tracking-widest text-[10px]">Contact</span>
-<p class="text-slate-500 dark:text-slate-400">9831274727</p>
-<p class="text-slate-500 dark:text-slate-400">8159020468</p>
-<div class="flex gap-4">
-<span class="material-symbols-outlined text-slate-400 cursor-pointer hover:text-primary transition-colors" data-icon="facebook">social_leaderboard</span>
-<span class="material-symbols-outlined text-slate-400 cursor-pointer hover:text-primary transition-colors" data-icon="share">share</span>
-</div>
-</div>
-</div>
+
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <span class="eyebrow"><span class="lamp"><svg viewBox="0 0 24 24" fill="none"><path class="flame" d="M12 3c1.8 2.4 3 4.2 3 6.4a3 3 0 1 1-6 0C9 7.2 10.2 5.4 12 3z" fill="#E3A343"/><path d="M7 15h10a5 5 0 0 1-5 6 5 5 0 0 1-5-6z" fill="#0B4F45"/></svg></span>Reach us</span>
+      <h2 style="margin-top:12px;">We're a short walk from Rupial Nandy Road.</h2>
+
+      <div style="margin-top:32px;">
+        <div class="c-item">
+          <div class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.3 7-11a7 7 0 0 0-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+          <div>
+            <h4>Our address</h4>
+            <p>Bidyalankar More, beside RNMCRC, Rupial Nandy Road, Chandannagar, Hooghly</p>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .7 3a2 2 0 0 1-.4 2.1L8 10.3a16 16 0 0 0 5.7 5.7l1.5-1.4a2 2 0 0 1 2.1-.4c1 .4 2 .6 3 .7a2 2 0 0 1 1.7 2z"/></svg></div>
+          <div>
+            <h4>Emergency call</h4>
+            <p class="phone-lg"><a href="tel:9831274727">9831274727</a></p>
+            <p>Alt: 8159020468</p>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+          <div>
+            <h4>Clinic hours</h4>
+            <p>Mon – Sat: 8:00 AM – 10:00 PM</p>
+            <p>Sunday: 9:00 AM – 2:00 PM</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="map-frame reveal">
+      <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBT8kuESDuB7jCj9mb-KugwulfLOFGed5O4sLvvrFh7sXI5_SZxXB1GEBpQmxtr7bW2jj4vKfB78v5YPW2egZf0ln_KxnJ0BHL_cjOsY5HEIsISD17_gBI8DVS8n2v2E9EbAOtQcZHV_ckpQsA8fF_sj4xfETXMb9OPwaD9r_ZzyMBOcwTLkFJTSuPwycGy8POa5CwVLzD87dn6OcvSUZpRUp2Gf7BAA9ODEEMaXaGQjsWWCC0C_9s76XRGSXuhceJvp2Ape6mTMUnT" alt="Map location of Mahamaya Clinic in Chandannagar"/>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <span class="lamp"><svg viewBox="0 0 24 24" fill="none"><path class="flame" d="M12 3c1.8 2.4 3 4.2 3 6.4a3 3 0 1 1-6 0C9 7.2 10.2 5.4 12 3z" fill="#E3A343"/><path d="M7 15h10a5 5 0 0 1-5 6 5 5 0 0 1-5-6z" fill="#FAF6EE"/></svg></span>
+          <span>Mahamaya Doctor's Clinic</span>
+        </div>
+        <p>Providing medical services and pharmacy assistance to the residents of Chandannagar and Hooghly since 1996.</p>
+      </div>
+      <div>
+        <h5>Location</h5>
+        <p style="margin-bottom:10px;">Bidyalankar More, Chandannagar, Hooghly</p>
+        <a href="#contact">Location map</a>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <a href="tel:9831274727">9831274727</a>
+        <a href="tel:8159020468">8159020468</a>
+      </div>
+    </div>
+    <div class="foot-bottom">© 2026 Mahamaya Doctor's Clinic &amp; Dipanjan Medical.</div>
+  </div>
 </footer>
-</body></html>
+
+<script>
+  // sticky nav shadow
+  const nav = document.getElementById('siteNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 12);
+  }, { passive: true });
+
+  // mobile menu
+  const burger = document.getElementById('burgerBtn');
+  const panel = document.getElementById('mobilePanel');
+  burger.addEventListener('click', () => {
+    const open = panel.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open);
+  });
+  panel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    panel.classList.remove('open');
+    burger.setAttribute('aria-expanded', false);
+  }));
+
+  // scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // doctor carousel controls
+  const carousel = document.getElementById('docCarousel');
+  const scrollAmt = 270;
+  document.getElementById('carPrev').addEventListener('click', () => carousel.scrollBy({ left: -scrollAmt, behavior: 'smooth' }));
+  document.getElementById('carNext').addEventListener('click', () => carousel.scrollBy({ left: scrollAmt, behavior: 'smooth' }));
+</script>
+
+</body>
+</html>
